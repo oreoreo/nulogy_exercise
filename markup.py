@@ -9,4 +9,12 @@ def markup(price, numPeople, category):
        second_markup = 1.0 + categories[category] + 0.012 * numPeople
        final_price = flat_price * second_markup
        return round(final_price, 2)
-   
+ 
+ 
+if __name__ == "__main__":
+   raw_price = raw_input("Enter price: ")
+   price = float(raw_price[1:])
+   raw_numPeople = raw_input("Enter # of workers: ")
+   numPeople = int(raw_numPeople.split()[0])
+   category = raw_input("Which category does the product fall under? ")
+   print("Total cost is $" + str(markup(price, numPeople, category)))
