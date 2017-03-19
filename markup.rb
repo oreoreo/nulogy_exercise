@@ -1,14 +1,12 @@
-def markup(price, numPeople, category)
-  #multiply the markup with flat -> (people + categories)
-  #price after flat markup
-  categories = {"drugs":0.075, "food":0.13, "electronics":0.02}
-  flat_price = price * 1.05
-  if categories[:"#{category}"]
-    second_markup = 1.0 + categories[:"#{category}"] + 0.012 * numPeople
-  else
-    second_markup = 1.0 + 0.012 * numPeople
-  end
-  final_price = flat_price * second_markup
-  #round to second place
-  final_price.round(2)
-end
+require_relative "calculate_markup"
+
+puts "Enter price: "
+#gets price in format of $1000.00
+priceStr = gets.chomp
+price = priceStr[1..-1].to_f
+puts "Enter # of workers: "
+numPeople = gets.chomp.to_i
+puts "Which category does the product fall under? "
+category = gets.chomp
+total = calculate_markup(price, numPeople, category)
+puts "Total cost is $" + "#{total}"
